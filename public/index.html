@@ -2,13 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="./images/logo.png">
     <meta
       name="pwa weather"
       content="Web site created using with PWA in mind."
     />
-    <title>React App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Modern PWA React Weather Application">
+    <link rel="apple-touch-icon" href="./images/logo.png">
+    <link rel="manifest" href="./manifest.json">
+    <title>Weather App</title>
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      if("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("./serviceworker.js")
+          .then((reg) => console.log("success", reg.scope))
+          .catch((err) => console.log("Failuer:", err))
+        })
+      }
+    </script>
   </body>
 </html>
